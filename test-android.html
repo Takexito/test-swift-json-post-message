@@ -10,8 +10,8 @@
       <script>
         function openInBrowser() {
             try {
-                if (window.Android && window.Android.postMessage) {
-                    window.Android.postMessage({
+                if (window.NuveiCashierHelper && window.NuveiCashierHelper.postMessage) {
+                    window.NuveiCashierHelper.postMessage({
                         action: "open_in_browser",
                         url: "https://google.com"
                     });
