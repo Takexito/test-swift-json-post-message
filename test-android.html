@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Test Integration</title>
+   </head>
+   <body>
+      <button onclick="openInBrowser()">Open in External Browser</button>
+      <script>
+        function openInBrowser() {
+            try {
+                if (window.Android && window.Android.postMessage) {
+                    window.Android.postMessage({
+                        action: "open_in_browser",
+                        url: "https://google.com"
+                    });
+                } else {
+                    console.error('The Android interface is not available.');
+                }
+            } catch (err) {
+                alert("Error: " + err.toString());
+            }
+        }
+      </script>
+   </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test WebAppInterface</title>
+</head>
+<body>
+
+<button onclick="sendMessageToAndroid()">Send Message to Android</button>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>
