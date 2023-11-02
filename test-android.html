@@ -10,14 +10,11 @@
       <script>
         function openInBrowser() {
             try {
-                if (window.NuveiCashierHelper && window.NuveiCashierHelper.postMessage) {
-                    window.NuveiCashierHelper.postMessage({
-                        action: "open_in_browser",
-                        url: "https://google.com"
-                    });
-                } else {
-                    console.error('The Android interface is not available.');
-                }
+               if (window.NuveiCashierHelper && typeof window.NuveiCashierHelper.postMessage === 'function') {
+                  window.NuveiCashierHelper.postMessage('{\"action\" : \"open_in_browser", \"url\" : \"https://google.com\"}');
+               } else {
+                  console.error('The Android interface is not available.');
+               }
             } catch (err) {
                 alert("Error: " + err.toString());
             }
