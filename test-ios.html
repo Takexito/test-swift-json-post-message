@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Test Integration</title>
+   </head>
+   <body>
+      <button onclick="openInBrowser()">Open in External Browser</button>
+      <script>
+         function openInBrowser() {
+             try {
+                 if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.NuveiCashierHelper) {
+                     window.webkit.messageHandlers.NuveiCashierHelper.postMessage({
+                         action: "open_in_browser",
+                         url: "https://google.com"
+                     });
+                 } else {
+                     alert("This function is only available in the app's WebView.");
+                 }
+             } catch (err) {
+                 alert("Error: " + err.toString());
+             }
+         }
+      </script>
+   </body>
+</html>
